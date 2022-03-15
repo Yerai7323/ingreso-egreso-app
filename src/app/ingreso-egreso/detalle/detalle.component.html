@@ -1,33 +1,38 @@
 <div class="row">
-    <div class="col-12">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Detalle de ingreso egreso</h4>
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Detalle de ingreso egreso</h4>
 
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>Descripción</th>
-                  <th>Monto</th>
-                  <th>Tipo</th>
-                  <th></th>
-                </tr>
-              </thead>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Total</th>
+              <th>Tipo</th>
+              <th></th>
+            </tr>
+          </thead>
 
-              <tbody>
-                <tr>
-                  <td>Descripción</td>
-                  <td>Monto</td>
-                  <td>Tipo</td>
-                  <td>acciones</td>
-                </tr>
-              </tbody>
-
-            </table>
-
-
-          </div>
-        </div>
+          <tbody>
+            <tr *ngFor="let item of ingresosEgresos | ordenIngreso">
+              <td>{{ item.descripcion }}</td>
+              <td>{{ item.total | currency: "EUR" }}</td>
+              <td
+                [class.text-success]="item.tipo === 'Ingreso'"
+                [class.text-danger]="item.tipo !== 'Ingreso'"
+              >
+                {{ item.tipo }}
+              </td>
+              <td>
+                <button (click)="borrar( item.uid )" type="button" class="btn btn-danger">
+                  <i class="fa fa-trash"></i>Borrar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
-  
