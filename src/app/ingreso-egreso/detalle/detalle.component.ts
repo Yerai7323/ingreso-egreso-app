@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/app.reducer';
@@ -11,7 +11,7 @@ import Swal from 'sweetalert2';
   templateUrl: './detalle.component.html',
   styleUrls: ['./detalle.component.css'],
 })
-export class DetalleComponent implements OnInit {
+export class DetalleComponent implements OnInit, OnDestroy {
   ingresosEgresos: IngresoEgreso[] = [];
   ingresosSubs!: Subscription;
 
@@ -23,9 +23,6 @@ export class DetalleComponent implements OnInit {
       .subscribe((items) => (this.ingresosEgresos = items.items));
   }
 
-  /* ngOnDestroy(): void {
-    this.ingresosSubs.unsubscribe();
-  }  */
 
   ngOnDestroy(): void {
     if (this.ingresosSubs) {
