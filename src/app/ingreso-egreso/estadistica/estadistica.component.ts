@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
-import { ChartData, ChartType } from 'chart.js';
+import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
 @Component({
   selector: 'app-estadistica',
@@ -23,7 +23,10 @@ export class EstadisticaComponent implements OnInit {
     
   };
   public doughnutChartType: ChartType = 'doughnut';
-
+  public doughnutChartOptions: ChartConfiguration['options'] = {
+    responsive: true,
+    maintainAspectRatio: false,
+  };
 
 
   constructor(private store: Store<AppState>) {}
@@ -48,7 +51,5 @@ export class EstadisticaComponent implements OnInit {
       });
       this.doughnutChartData.datasets.push({data: [this.ingresosTotal,this.egresosTotal], backgroundColor:['green','red'], borderColor: "black"})
     });
-
-
   }
 }

@@ -72,10 +72,10 @@
   </div>
 
   <div class="col-12 p-5" *ngIf="ingresos > 0 || egresos > 0">
-      <div class="card card-statistics">
-        <div class="card-body">
+      <div class="card card-statistics" style="width: 400px; height: 400px;">
+        <div class="card-body" >
           <h1 class="card-title">Gráfica</h1>
-              <div style="display:block;width: 400px; height: 400px;">
+              <div  style="display:block">
                 <canvas baseChart
                   [data]="doughnutChartData"
                   [type]="doughnutChartType"
