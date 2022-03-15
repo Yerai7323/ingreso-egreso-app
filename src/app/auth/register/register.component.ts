@@ -52,7 +52,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }) */
 
     const { nombre, email, password } = this.registroForm.value;
-    console.log(nombre, email, password);
     this.authService
       .crearUsuario(nombre, email, password)
       .then((credenciales) => {
