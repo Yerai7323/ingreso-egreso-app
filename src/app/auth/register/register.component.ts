@@ -44,12 +44,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
     }
 
     this.store.dispatch(ui.isLoading());
-    /* Swal.fire({
-      title: 'Creando usuario...',
-      didOpen: () => {
-        Swal.showLoading()
-      }
-    }) */
 
     const { nombre, email, password } = this.registroForm.value;
     this.authService
@@ -57,7 +51,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       .then((credenciales) => {
         this.store.dispatch(ui.stopLoading());
         this.router.navigate(['/']);
-        /* Swal.close(); */
       })
       .catch((err) => {
         this.store.dispatch(ui.stopLoading());
